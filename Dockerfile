@@ -19,9 +19,8 @@ RUN apt-get update -y
 RUN apt-get install -y git
 
 # Use ssh on git
-RUN git config --global --add url."git@github.com:".insteadOf "https://github.com/"
-
 RUN usermod -aG plugdev docker-gh
+RUN apt-get install android-sdk-platform-tools-common
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/docker-gh && mkdir actions-runner && cd actions-runner \
