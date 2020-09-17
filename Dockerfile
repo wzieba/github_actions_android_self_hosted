@@ -2,7 +2,7 @@
 FROM bitriseio/docker-android
 
 # set the github runner version
-ARG RUNNER_VERSION="2.263.0"
+ARG RUNNER_VERSION="2.273.2"
 
 USER root
 
@@ -12,6 +12,11 @@ RUN apt-get update -y && apt-get upgrade -y && useradd -m docker-gh
 # install python and the packages the your code depends on along with jq so we can parse JSON
 # add additional packages as necessary
 RUN apt-get install -y curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev
+
+# Update git
+RUN add-apt-repository ppa:git-core/ppa -y
+RUN apt-get update -y
+RUN apt-get install -y git
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/docker-gh && mkdir actions-runner && cd actions-runner \
