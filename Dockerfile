@@ -18,6 +18,10 @@ RUN add-apt-repository ppa:git-core/ppa -y
 RUN apt-get update -y
 RUN apt-get install -y git
 
+# Use ssh on git
+RUN git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+
+
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/docker-gh && mkdir actions-runner && cd actions-runner \
     && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
