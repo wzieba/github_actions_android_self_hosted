@@ -4,6 +4,7 @@ services:
   runner:
     build: .
     environment:
-      - ORGANIZATION=<YOUR-GITHUB-ORGANIZATION>
-      - ACCESS_TOKEN=<YOUR-GITHUB-ACCESS-TOKEN>
+      - ORGANIZATION=<ORGANIZATION-NAME>
+      - REPO=<REPOSITORY-NAME>
+      - RUNNER_TOKEN=<RUNNER-TOKEN> # Settings > Actions > Add Runner > Configure > find "--token AB...."
 
